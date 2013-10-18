@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Math - Angoli</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="todec_text">Converti/Cancella</string>
+    <string name="decimal_hint">decimale</string>
+    <string name="rad_hint">rad</string>
+    <string name="toast_message">Inserire la misura dell\'angolo prima di continuare!</string>
+    <string name="menu_exit">Esci</string>
+    <string name="alert_title">Attenzione</string>
+    <string name="alert_text">Formato sessagesimale invalido! Continuo..</string>
+</resources>
