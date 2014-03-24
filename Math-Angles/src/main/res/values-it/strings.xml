@@ -10,5 +10,5 @@
     <string name="toast_message">Inserire la misura dell\'angolo prima di continuare!</string>
     <string name="menu_exit">Esci</string>
     <string name="alert_title">Attenzione</string>
-    <string name="alert_text">Formato sessagesimale invalido! Continuo..</string>
+    <string name="alert_text">Formato sessagesimale invalido! Normalizzo…</string>
 </resources>

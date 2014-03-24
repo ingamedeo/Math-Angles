@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo" >
+        android:theme="@android:style/Theme.Holo"
+        android:debuggable="true">
         <activity
             android:name="com.ingamedeo.mathangles.MainActivity"
             android:label="@string/app_name" >

@@ -8,13 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -145,28 +143,18 @@ public class MainActivity extends Activity {
     }
 
     public void mostralert(String titolo, String messaggio) {
-        AlertDialog alertDialog = new AlertDialog.Builder(
-                MainActivity.this).create();
 
-        // Setting Dialog Title
-        alertDialog.setTitle(titolo);
-
-        // Setting Dialog Message
-        alertDialog.setMessage(messaggio);
-
-        // Setting Icon to Dialog
-        alertDialog.setIcon(R.drawable.ic_launcher);
-
-        // Setting OK Button
-        alertDialog.setButton(0,"OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // Write your code here to execute after dialog closed
-                dialog.cancel();
-            }
-        });
-
-        // Showing Alert Message
-        alertDialog.show();
+        //New Way to create Dialogs ;)
+        new AlertDialog.Builder(this)
+                .setTitle(titolo)
+                .setMessage(messaggio)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setIcon(R.drawable.ic_launcher)
+                .show();
     }
 
     @Override
