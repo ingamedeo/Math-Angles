@@ -17,4 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <!-- Custom Theme -->
+    <style name="AnglesTheme" parent="@android:style/Theme.Holo">
+        <item name="android:windowBackground">@drawable/background</item>
+    </style>
+
 </resources>

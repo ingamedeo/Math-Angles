@@ -2,20 +2,10 @@ package com.ingamedeo.mathangles;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceFragment;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class MenuActivity extends PreferenceActivity {
 
@@ -24,12 +14,23 @@ public class MenuActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.menu);
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true); //Modify Action Bar. Back Button
 
-        getFragmentManager().beginTransaction().replace(android.R.id.content, new MenuFragment()).commit();
+        //Only API 11 > >
+        int currentAPIVersion = android.os.Build.VERSION.SDK_INT;
+        if (currentAPIVersion >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+
+            // RUN THE CODE SPECIFIC TO THE API LEVELS ABOVE HONEYCOMB (API 11+)
+            ActionBar actionBar = getActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true); //Modify Action Bar. Back Button
+        }
+
+        //Old Way to add preferences..Works on GingerBread.
+        addPreferencesFromResource(R.xml.settings);
+
+        //getFragmentManager().beginTransaction().replace(android.R.id.content, new MenuFragment()).commit();
 
     }
+    /*
     public static class MenuFragment extends PreferenceFragment
     {
         @Override
@@ -39,6 +40,7 @@ public class MenuActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.settings);
         }
     }
+    */
     public boolean onOptionsItemSelected(MenuItem item) { //Action Bar
         switch (item.getItemId()) {
             case android.R.id.home:

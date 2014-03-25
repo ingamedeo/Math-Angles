@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
@@ -42,15 +43,46 @@ public class MainActivity extends Activity {
         df = new DecimalFormat();
         df.setMaximumFractionDigits(numberofdigits);
 
+        //double t = 3.958;
+        //fromdectosess(String.valueOf(t));
         //decimal.clearFocus();
         //gradi.requestFocus();
         todec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isEmpty(gradi)==true && isEmpty(primi)==true && isEmpty(secondi)==true) { //If all are empty..then show an error
-                    mostratoast(getResources().getString(R.string.toast_message));
+                //From sessagesimali to everything else
+                if (isEmpty(gradi) && isEmpty(primi) && isEmpty(secondi)) { //If all are empty..check for decimal
+                    if (isEmpty(decimal)) { //If empty check for rad
+                        if (isEmpty(rad)) { //If rad is empty show error
+                            mostratoast(getResources().getString(R.string.toast_message));
+                        } else { //If FOUND rad
+                            decimal.setText(df.format(convertfromrad(Float.parseFloat(rad.getText().toString()))));
+                            ArrayList<Integer> returnsess = fromdectosess(String.valueOf(convertfromrad(Float.parseFloat(rad.getText().toString()))));
+                            for (int t=0; t < returnsess.size(); t++) {
+                                if (t==0) {
+                                    gradi.setText(String.valueOf(returnsess.get(t)));
+                                } else if (t==1) {
+                                    primi.setText(String.valueOf(returnsess.get(t)));
+                                } else if (t==2) {
+                                    secondi.setText(String.valueOf(returnsess.get(t)));
+                                }
+                            }
+                        }
+                    } else { //If FOUND decimal
+                        ArrayList<Integer> returnsess = fromdectosess(decimal.getText().toString());
+                        for (int t=0; t < returnsess.size(); t++) {
+                            if (t==0) {
+                                gradi.setText(String.valueOf(returnsess.get(t)));
+                            } else if (t==1) {
+                                primi.setText(String.valueOf(returnsess.get(t)));
+                            } else if (t==2) {
+                                secondi.setText(String.valueOf(returnsess.get(t)));
+                            }
+                        }
+                        rad.setText(df.format(convertorad(Float.parseFloat(decimal.getText().toString()))));
+                    }
                 }
-                else {
+                else { //If FOUND gradi
                     if (isEmpty(gradi)) {
                         gradi.setText("00");
                     }
@@ -101,6 +133,47 @@ public class MainActivity extends Activity {
         float pi = (float) Math.PI;
         float result = ((decimal*pi)/180);
         return result;
+    }
+
+    /*
+    Xg = (Xr *180) / P
+    Xr = (Xg * P) / 180
+     */
+
+    //Result is sessadecimali
+    private float convertfromrad(float rad) {
+        float pi = (float) Math.PI;
+        float result = ((rad*180)/pi);
+        return result;
+    }
+
+
+    private ArrayList<Integer> fromdectosess(String decimal) {
+        ArrayList<Integer> ris = new ArrayList<Integer>();
+
+        for (int i=0; i<3; i++) { //I need to cycle 3 times...to get gradi, primi, secondi
+            //Split decimal part
+            String[] parts = decimal.split("\\."); //Split - parte intera e parte decimale
+            String parteintera = parts[0]; //Prendo la parte intera
+            ris.add(Integer.parseInt(parteintera)); //Metto nell'arraylist
+
+            if (parts.length > 1) { //Se è > di 1, c'è qualcosa dopo la virgola
+                String partedec = "0." + parts[1]; //ottengo solo es. 20 ... num. decimale è 0.20
+                Double p = Double.parseDouble(partedec) * 60; //Moltiplico per 60
+                decimal = p.toString(); //Setto questo nuovo numero come numero da scansionare al prossimo passaggio.
+            } else {
+                break;
+            }
+        }
+
+        /*
+        //print out
+        for (int j=0; j < ris.size(); j++) {
+            System.out.println(ris.get(j));
+        }
+        */
+
+        return ris;
     }
 
     private void normalizzprimisecondi() {

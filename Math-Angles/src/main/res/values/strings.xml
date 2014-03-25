@@ -16,6 +16,7 @@
     <string name="pref_accuracy">Accuracy</string>
     <string name="pref_app">Angles</string>
     <string name="title_activity_about">AboutActivity</string>
-    <string name="info_text">This application has been created by Ingamedeo. Angles allows you to calculate angles in sexagesimal, decimal and radians. This in an opensource application. Anyway if you want you can donate via PayPal at ingamedeo@gmail.com</string>
+    <string name="info_text">This application has been created by Ingamedeo. \n\nAngles allows you to calculate angles in sexagesimal, decimal and radians. \n\nThis in an opensource application. \n\nBuy me a coffee! \nPayPal - ingamedeo@gmail.com</string>
+    <string name="ratetext">Rate Me!</string>
 
 </resources>
