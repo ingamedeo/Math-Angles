@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="gradi" type="id"/>
+    <item name="primi" type="id"/>
+    <item name="secondi" type="id"/>
+    <item name="decimal" type="id"/>
+    <item name="rad" type="id"/>
+    <item name="todec" type="id"/>
+</resources>

@@ -3,28 +3,30 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.android.tools.build:gradle:1.2.3'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
 }
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "19.0.3"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 18
+        targetSdkVersion 22
     }
 }
 
 dependencies {
 
-    compile "com.android.support:appcompat-v7:19.0.+"
+    compile 'com.android.support:support-v4:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:design:22.2.0'
 
 	// You must install or update the Support Repository through the SDK manager to use this dependency.
 	// The Support Repository (separate from the corresponding library) can be found in the Extras category.

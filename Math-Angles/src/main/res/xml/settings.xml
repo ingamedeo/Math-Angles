@@ -26,9 +26,6 @@
             android:key="about"
             android:title="About"
             android:summary="About Math-Angles. By ingamedeo">
-            <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.ingamedeo.mathangles"
-                android:targetClass="com.ingamedeo.mathangles.AboutActivity"/>
         </Preference>
     </PreferenceCategory>
 
